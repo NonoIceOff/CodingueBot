@@ -46,7 +46,12 @@ module.exports = {
     } else {
       try {
         // Envoyer un message privé à l'utilisateur
-        await console.log("Message secret :", message);
+        try {
+          await console.log("Message secret :", message, " de ", interaction.author ," à ", targetUser);
+        } catch (error) {
+          console.log("Problème sur les logs.")
+        }
+        
         await targetUser.send(
           `**Vous avez reçu un message anonyme :**\n> ${message}\n\n*Inutile de répondre, je ne récupère pas les messages ici*`
         );
